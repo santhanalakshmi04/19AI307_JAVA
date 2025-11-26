@@ -1,23 +1,37 @@
-# Ex.No:3(E)  STRINGBUILDER OBJECT REFERENCE IN JAVA
+# Ex.No:4(B) INTRODUCTION TO JAVA INHERITANCE
 
 ## AIM:
-To write a Java program that creates a StringBuilder object using a given string and assigns its reference to the variable sb.
+To create  a Java program to perform the inheritance concept for employee details.
 
 ## ALGORITHM :
-1.	Start the program.
-2.	Declare and initialize a string variable str1.
-3.	Create a StringBuilder object by passing str1 to its constructor.
-4.	Store the object reference in the variable sb.
-5.	Print the contents of sb to verify the output.
-6.	End the program.
+1.	Start the Program
+2.	Define class `Person`:
+-	a) Declare `emp_id`, `name`, and `dept` as instance variables
+3.	Define class `Employee` that extends `Person`:
+-	a) Define method `getDetails()`:
+-	i) Create a `Scanner` object `sc`
+-	ii) Read `name`, `emp_id`, and `dept` from user input
+-	b) Define method `display()`:
+-	i) Print the `name`, `emp_id`, and `dept`
+4.	Define `Main` class with `main` method:
+-	a) Create an `Employee` object `emp`
+-	b) Call `getDetails()` to input employee details
+-	c) Call `display()` to output employee details
+5.	End
+
+
+
+
+
+
 
 
 ## PROGRAM:
  ```
 /*
-Program to implement a StringBuilder Object Reference in Java
-Developed by: Santhana Lakshmi K
-RegisterNumber: 212222240091 
+Program to implement a Inheritance using Java
+Developed by: KISHORE B
+RegisterNumber: 212224100032
 */
 ```
 
@@ -25,23 +39,141 @@ RegisterNumber: 212222240091
 ```
 import java.util.Scanner;
 
-public class StringBuilderExample {
+// Base class
+class Employee {
+    String name;
+    int empID;
+
+    void setDetails(String name, int empID) {
+        this.name = name;
+        this.empID = empID;
+    }
+
+    void displayDetails() {
+        System.out.print("Name: " + name);
+        System.out.print("Emp_ID: " + empID);
+    }
+}
+
+// Derived class
+class Department extends Employee {
+    String departmentName;
+
+    void setDepartment(String departmentName) {
+        // If the input is "Software Developer", we abbreviate it to "Software"
+        if (departmentName.equalsIgnoreCase("Software Developer")) {
+            this.departmentName = "Software";
+        } else {
+            this.departmentName = departmentName;
+        }
+    }
+
+    void displayDepartmentDetails() {
+        // Call the base class method to display name and empID
+        displayDetails();
+        System.out.println("Department: " + departmentName);
+    }
+}
+
+// Main class
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String str1 = scanner.nextLine();
 
-        StringBuilder sb = new StringBuilder(str1);
+        // Creating an object of the Department class
+        Department employee = new Department();
 
-        System.out.println(sb.length());
-        System.out.println( (sb.length() + 16));
+        // Getting user input
+        String name = scanner.nextLine();
+        int empID = scanner.nextInt();
+        scanner.nextLine();  // Consume the newline l;
+        String department = scanner.nextLine();
+
+        // Setting and displaying employee and department details
+        employee.setDetails(name, empID);
+        employee.setDepartment(department);
+        employee.displayDepartmentDetails();
     }
 }
 ```
 ## OUTPUT:
 
-<img width="428" height="365" alt="Screenshot 2025-10-09 212750" src="https://github.com/user-attachments/assets/3bc7a1f4-a1d7-4756-8ff0-4faf81d4347d" />
 
 
 ## RESULT:
-Thus the  Java program successfully creates a StringBuilder object using the given string and stores the reference in the variable sb. The contents of the object are printed using the reference variable.
+Thus the Java program to implement the inheritance concept for employee details was  executed successfully.
+
+# Ex.No:4(A)  JAVA CONSTRUCTOR
+## AIM:
+To create a Java program using constructor to print the circumference of rectangle.[l=5,w=6]
+
+## ALGORITHM :
+1.  1.	Start the Program.
+2.	Define a class `circum`
+3.	Inside the class, define two integer variables `l` and `w` with values 5 and 6, respectively
+4.	Create a constructor `circum()`:
+-	a) Calculate the `circumference` as `2 * (l + w)`
+-	b) Print the `circumference` twice with different labels ("Area of First Rectangle" and "Area of Second Rectangle")
+5.	In `main`, create an object `sc` of the `circum` class
+6.	End
+
+
+
+
+
+## PROGRAM:
+ ```
+/*
+Program to implement a Constructor using Java
+Developed by: Santhana Lakshmi K
+RegisterNumber: 212222240091
+*/
+```
+
+## Sourcecode.java:
+```
+class Rectangle 
+ { 
+    int length;
+    int width;
+    Rectangle (int l, int w) 
+    {  
+        //Write your code here
+        length=l;
+        width=w;
+    } 
+    Rectangle (Rectangle obj) 
+    { 
+        //Write your code here
+        this.length=obj.length;
+        this.width=obj.width;
+        
+    } 
+    int circumference () 
+    { 
+        //Write your code here
+        return (length+width)*2+8;
+    } 
+} 
+    //class to create Rectangle object and calculate area 
+public class CopyConstructor 
+{ 
+    public static void main(String[] args) 
+    { 
+        Rectangle  firstRect = new Rectangle (5,6); 
+        //Write your code here
+        System.out.println("Area  of First Rectangle : "+firstRect.circumference());
+        Rectangle secondRect = new Rectangle (firstRect);
+        System.out.println("Area of First Second Rectangle : "+secondRect.circumference());
+    } 
+} 
+```
+## OUTPUT:
+
+<img width="963" height="204" alt="Screenshot 2025-10-09 213003" src="https://github.com/user-attachments/assets/0dee3375-9d40-4dc5-80c1-4b508cac5033" />
+
+
+## RESULT:
+Thus the Java program using constructor to print the circumference of rectangle was executed successfully.
+
 
